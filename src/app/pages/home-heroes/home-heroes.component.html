@@ -1,0 +1,31 @@
+<h1 class="text-center m-4">Prueba Front W2M</h1>
+<p class="lead text-center p-2">
+  Desarrollar, utilizando Angular y Typescript, una aplicación SPA que permita hacer un mantenimiento de súper héroes
+</p>
+<!-- Filter Input -->
+<div class="form-row mb-4">
+  <div class="input-group mb-2 col-md-6 offset-md-3">
+    <div class="input-group-prepend">
+      <div class="input-group-text"><i class="bi bi-funnel"></i></div>
+    </div>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Filtrar Super Héroes por nombre o super poder"
+      [formControl]="filterInput"
+      (ngModelChange)="filterInputChange()"/>
+  </div>
+</div>
+
+<div class="row" *ngIf="filterInput.dirty && showNotFoundMessage">
+  <div class="col-md-6 offset-md-3">
+    <div class="alert alert-danger">
+      {{ notFoundMessage }}
+    </div>
+  </div>
+</div>
+
+<app-heroes-card-list
+  [filterInput]="filterInput.value" 
+  [heroes]="heroes$ | async">
+</app-heroes-card-list>

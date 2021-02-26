@@ -1,0 +1,27 @@
+
+
+<ng-container *ngIf="heroes">
+  <mat-card *ngFor="let hero of heroes | filter: filterInput:'id':'powers'" class="hero-card mb-5 mx-auto mat-elevation-z10">
+    <mat-card-header>
+        <mat-card-title>{{hero.name}}</mat-card-title>
+    </mat-card-header>
+  
+    <img mat-card-image [src]="'./assets/images/dummy-image.jpg'">
+  
+    <mat-card-content>
+      <mat-card-subtitle>Powers</mat-card-subtitle>
+      <p>{{hero.powers}}</p>
+    </mat-card-content>
+  
+    <mat-card-actions class="hero-actions">
+        <button mat-button class="mat-raised-button mat-primary">
+            Editar
+        </button>
+        <button mat-button class="mat-raised-button mat-accent">
+            Borrar
+        </button>
+    </mat-card-actions>
+  </mat-card>
+</ng-container>
+
+
