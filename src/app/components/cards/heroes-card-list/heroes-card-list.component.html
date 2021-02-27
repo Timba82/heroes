@@ -14,11 +14,16 @@
     </mat-card-content>
   
     <mat-card-actions class="hero-actions">
-        <button mat-button class="mat-raised-button mat-primary">
+        <button 
+          type="button" 
+          class="btn btn-secondary mr-2">
             Editar
         </button>
-        <button mat-button class="mat-raised-button mat-accent">
-            Borrar
+        <button 
+          type="button" 
+          class="btn btn-danger"
+          (click)="deleteHero(hero.id)">
+          Borrar
         </button>
     </mat-card-actions>
   </mat-card>

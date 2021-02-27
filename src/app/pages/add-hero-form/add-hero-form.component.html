@@ -1,0 +1,38 @@
+
+<form [formGroup]="form" class="mx-auto">
+    <mat-form-field>
+        <input
+            matInput
+            placeholder="Nombre del Super Héroe"
+            formControlName="name"
+            required>
+        <mat-error
+            *ngIf="this.form.get('name').invalid && this.form.get('name').touched">
+            {{ requiredErrorMessage }}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input
+            matInput 
+            placeholder="Poderes Super Héroe"
+            formControlName="powers"
+            required>
+        <mat-error
+            *ngIf="this.form.get('powers').invalid && this.form.get('powers').touched">
+            {{ requiredErrorMessage }}
+        </mat-error>
+    </mat-form-field>
+        <div 
+            *ngIf="showSuccess"
+            class="alert alert-success" 
+            role="alert">
+            {{ saveSuccessMessage }}
+        </div>
+        <button 
+            type="button" 
+            class="btn btn-primary mt-3"
+            [disabled]="form.invalid"
+            (click)="saveSuperHero()">
+            Guardar
+        </button>
+</form>

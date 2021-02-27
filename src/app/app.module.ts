@@ -7,8 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeroesCardListComponent } from './components/cards/heroes-card-list/heroes-card-list.component';
 import { HomeHeroesComponent } from './pages/home-heroes/home-heroes.component';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { FilterPipe } from './helpers/pipes/filter.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { NavBarComponent } from './components/layouts/nav-bar/nav-bar.component';
+import { AddHeroFormComponent } from './pages/add-hero-form/add-hero-form.component';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -16,7 +21,9 @@ import { FilterPipe } from './helpers/pipes/filter.pipe';
     AppComponent,
     HomeHeroesComponent,
     HeroesCardListComponent,
-    FilterPipe
+    FilterPipe,
+    NavBarComponent,
+    AddHeroFormComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +31,10 @@ import { FilterPipe } from './helpers/pipes/filter.pipe';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

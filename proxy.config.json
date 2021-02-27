@@ -1,0 +1,10 @@
+{
+    "/api": {
+      "target": "https://api.heroes-81e07-default-rtdb.europe-west1.firebasedatabase.app/heroes",
+      "secure": true,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
