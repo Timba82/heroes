@@ -50,4 +50,16 @@ export class HomeHeroesComponent implements OnInit, OnDestroy {
     const result: Hero[] = this.filter.transform(this.heroes, this.filterInput.value, 'name');
     this.showNotFoundMessage = (result.length === 0);
   }
+
+  private removeHeroElementFromArray(id: string): void {
+    const heroIndex = this.heroes
+      .findIndex(
+        hero => hero.id === id
+    );
+    this.heroes.splice(heroIndex, 1);
+  }
+
+  getHeroIdEmitted(id: string): void {
+    this.removeHeroElementFromArray(id);
+  }
 }

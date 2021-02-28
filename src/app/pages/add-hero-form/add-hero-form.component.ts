@@ -17,9 +17,11 @@ export class AddHeroFormComponent implements OnInit, OnDestroy {
   headerPage: string;
   buttonText: string;
   private formSubmitSub: Subscription;
-  private hero: Hero;
+  private hero: Hero = {
+    name: '',
+    powers: ''
+  };
   private heroId: string;
-  private routeSub: Subscription;
   private getHeroByIdSub: Subscription;
 
   constructor(
@@ -31,7 +33,7 @@ export class AddHeroFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.initForm();
+    this.initForm(this.hero);
     this.setTemplateLiterals();
     if (this.heroId) {
       this.getHeroById(this.heroId);
@@ -47,10 +49,10 @@ export class AddHeroFormComponent implements OnInit, OnDestroy {
     }
   }
 
-  private initForm(): void {
+  private initForm(hero: Hero): void {
     this.form = this.fb.group({
-      name: ['', Validators.required],
-      powers: ['', Validators.required]
+      name: [hero.name, Validators.required],
+      powers: [hero.powers, Validators.required]
     });
   }
 
@@ -98,18 +100,13 @@ export class AddHeroFormComponent implements OnInit, OnDestroy {
   private getHeroById(id: string): void {
     this.getHeroByIdSub = this.httpService.getHeroById(id).subscribe(res => {
       this.hero = res;
-      this.updateFormValues(this.hero);
+      this.initForm(this.hero);
     });
   }
 
   private setTemplateLiterals(): void {
     this.headerPage = this.heroId ? 'Editar Super Héroe' : 'Añadir Super Heroe';
     this.buttonText = this.heroId ? 'Actualizar' : 'Guardar';
-  }
-
-  private updateFormValues(hero: Hero): void {
-    this.form.patchValue({name: hero.name});
-    this.form.patchValue({powers: hero.powers});
   }
 
 }

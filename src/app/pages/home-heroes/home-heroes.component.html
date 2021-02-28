@@ -1,4 +1,4 @@
-<h1 class="text-center m-4">Prueba Front W2M</h1>
+<h1 class="text-center m-4">Prueba Front <span class="w2m">W2M</span></h1>
 <p class="lead text-center p-2">
   Desarrollar, utilizando Angular y Typescript, una aplicación SPA que permita hacer un mantenimiento de súper héroes
 </p>
@@ -36,8 +36,8 @@
   </div>
 </div>
 
-<!-- <app-add-hero-form></app-add-hero-form> -->
 <app-heroes-card-list
   [filterInput]="filterInput.value" 
-  [heroes]="heroes">
+  [heroes]="heroes"
+  (emitDeleted)="getHeroIdEmitted($event)">
 </app-heroes-card-list>
