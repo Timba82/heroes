@@ -1,7 +1,7 @@
 
 
 <ng-container *ngIf="heroes">
-  <mat-card *ngFor="let hero of heroes | filter: filterInput:'id':'powers'" class="hero-card mb-5 mx-auto mat-elevation-z10">
+  <mat-card *ngFor="let hero of heroes | filter: filterInput:'name'" class="hero-card mb-5 mx-auto mat-elevation-z10">
     <mat-card-header>
         <mat-card-title>{{hero.name}}</mat-card-title>
     </mat-card-header>
@@ -16,7 +16,8 @@
     <mat-card-actions class="hero-actions">
         <button 
           type="button" 
-          class="btn btn-secondary mr-2">
+          class="btn btn-secondary mr-2"
+          (click)="editHero(hero.id)">
             Editar
         </button>
         <button 

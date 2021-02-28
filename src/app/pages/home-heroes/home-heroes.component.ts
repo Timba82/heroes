@@ -23,9 +23,6 @@ export class HomeHeroesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getAllHeroes();
-    this.heroesService.getHeroById('-MUXI-GNc6JoIkkpbkGe').subscribe( res => {
-        console.log('getHeroById', res);
-    });
   }
 
   ngOnDestroy(): void {
@@ -45,12 +42,12 @@ export class HomeHeroesComponent implements OnInit, OnDestroy {
           return heroesArray;
         })
       ).subscribe(heroes => {
-        this.heroes = heroes;
+          this.heroes = heroes;
       });
   }
 
   filterInputChange(): void {
-    const result: Hero[] = this.filter.transform(this.heroes, this.filterInput.value, 'powers', 'id');
+    const result: Hero[] = this.filter.transform(this.heroes, this.filterInput.value, 'name');
     this.showNotFoundMessage = (result.length === 0);
   }
 }

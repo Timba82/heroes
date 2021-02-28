@@ -66,8 +66,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "heroes-app:build",
-            "proxyConfig": "./proxy.config.json"
+            "browserTarget": "heroes-app:build"
           },
           "configurations": {
             "production": {

@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavBarComponent } from './components/layouts/nav-bar/nav-bar.component';
 import { AddHeroFormComponent } from './pages/add-hero-form/add-hero-form.component';
 import { MatInputModule } from '@angular/material/input';
+import { AppRoutes } from './app.routing';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AppRoutes,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,

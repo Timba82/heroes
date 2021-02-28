@@ -1,4 +1,5 @@
 
+<h1 class="text-center m-4">{{ headerPage }}</h1>
 <form [formGroup]="form" class="mx-auto">
     <mat-form-field>
         <input
@@ -22,17 +23,17 @@
             {{ requiredErrorMessage }}
         </mat-error>
     </mat-form-field>
-        <div 
-            *ngIf="showSuccess"
-            class="alert alert-success" 
-            role="alert">
-            {{ saveSuccessMessage }}
-        </div>
         <button 
             type="button" 
             class="btn btn-primary mt-3"
             [disabled]="form.invalid"
-            (click)="saveSuperHero()">
-            Guardar
+            (click)="submit()">
+            {{ buttonText }}
+        </button>
+        <button 
+            type="button" 
+            class="btn btn-secondary float-right mt-3"
+            [routerLink]="'/'">
+            Volver Inicio
         </button>
 </form>
