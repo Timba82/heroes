@@ -1,7 +1,9 @@
 
 
 <ng-container *ngIf="heroes">
-  <mat-card *ngFor="let hero of heroes | filter: filterInput:'name'" class="hero-card mb-5 mx-auto mat-elevation-z10">
+  <mat-card
+    *ngFor="let hero of heroes | slice: (page-1) * pageSize : page * pageSize" 
+    class="hero-card mb-5 mx-auto mat-elevation-z10">
     <mat-card-header>
         <mat-card-title>{{hero.name}}</mat-card-title>
     </mat-card-header>
@@ -28,6 +30,14 @@
         </button>
     </mat-card-actions>
   </mat-card>
+   
+  <ngb-pagination
+    *ngIf="heroes.length > pageSize"
+    class="d-flex justify-content-center"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="heroes.length">
+  </ngb-pagination>
 </ng-container>
 
 

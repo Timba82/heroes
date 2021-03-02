@@ -13,8 +13,8 @@
 </div>
 <hr>
 
-<!-- Filter Input -->
-<div class="form-row mb-4">
+<ng-container *ngIf="heroes.length > 0">
+  <div class="form-row mb-4">
   <div class="input-group mb-2 col-md-6 offset-md-3">
     <div class="input-group-prepend">
       <div class="input-group-text"><i class="bi bi-funnel"></i></div>
@@ -22,22 +22,25 @@
     <input
       type="text"
       class="form-control"
-      placeholder="Filtrar Super Héroes por nombre"
+      placeholder="Filtrar Super Héroes por nombre (Case Sensitive)"
       [formControl]="filterInput"
       (ngModelChange)="filterInputChange()"/>
   </div>
 </div>
 
-<div class="row" *ngIf="filterInput.dirty && showNotFoundMessage">
+<div class="row"
+  *ngIf="filterInput.dirty &&
+  filterResult.length === 0">
   <div class="col-md-6 offset-md-3">
     <div class="alert alert-danger">
       {{ notFoundMessage }}
     </div>
   </div>
 </div>
+</ng-container>
 
 <app-heroes-card-list
-  [filterInput]="filterInput.value" 
   [heroes]="heroes"
+  [heroesFilterResult]="filterResult"
   (emitDeleted)="getHeroIdEmitted($event)">
 </app-heroes-card-list>

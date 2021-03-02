@@ -18,6 +18,7 @@ import { UppercaseDirective } from './directives/uppercase/uppercase.directive';
 import { FilterPipe } from './helpers/pipes/filter.pipe';
 import { AddHeroFormComponent } from './pages/add-hero-form/add-hero-form.component';
 import { HomeHeroesComponent } from './pages/home-heroes/home-heroes.component';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { HomeHeroesComponent } from './pages/home-heroes/home-heroes.component';
     MatFormFieldModule,
     MatInputModule,
     MatPaginatorModule,
-    MatTableModule
+    MatTableModule,
+    NgbModule,
+    NgbPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

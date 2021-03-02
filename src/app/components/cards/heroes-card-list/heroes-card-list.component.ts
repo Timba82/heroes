@@ -13,18 +13,23 @@ import { HeroesService } from 'src/app/services/heroes/heroes.service';
 })
 export class HeroesCardListComponent implements OnInit, OnDestroy {
   @Input() heroes: Hero[] = [];
-  @Input() filterInput;
   @Output() emitDeleted: EventEmitter<string> = new EventEmitter();
+  @Input() set heroesFilterResult(value) {
+      this.heroes = value;
+      this.page = 1;
+  }
   private heroToDelete: string;
-  deleteHeroSub: Subscription;
+  private deleteHeroSub: Subscription;
+  public pageSize = 2;
+  public page = 1;
   private dialogMessage = '¿Seguro que quieres borrar este Super Héroes?. Es necesario para salvar el mundo.';
+
   constructor(
     private heroesService: HeroesService,
     private route: Router,
     private dialog: MatDialog) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     if (this.deleteHeroSub) {

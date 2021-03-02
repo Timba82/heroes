@@ -16,8 +16,8 @@ export class HomeHeroesComponent implements OnInit, OnDestroy {
   filterInput = new FormControl();
   public notFoundMessage = 'No existe super héroe que coincida con el filtro introducido';
   private getAllHeroesSub: Subscription;
-  public showNotFoundMessage = false;
   private filter = new FilterPipe();
+  filterResult: Hero[] = [];
 
   constructor(private heroesService: HeroesService) {}
 
@@ -42,13 +42,12 @@ export class HomeHeroesComponent implements OnInit, OnDestroy {
           return heroesArray;
         })
       ).subscribe(heroes => {
-          this.heroes = heroes;
+          this.heroes = this.filterResult = heroes;
       });
   }
 
   filterInputChange(): void {
-    const result: Hero[] = this.filter.transform(this.heroes, this.filterInput.value, 'name');
-    this.showNotFoundMessage = (result.length === 0);
+    this.filterResult = this.filter.transform(this.heroes, this.filterInput.value, 'name');
   }
 
   private removeHeroElementFromArray(id: string): void {
